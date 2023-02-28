@@ -26,3 +26,4 @@
             </div>
         </nav>
     </header>
+    <main class="container m-5">
