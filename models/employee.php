@@ -21,5 +21,19 @@ class Employee {
         $statement->execute();
     }
 
+    public static function readOne(string $username): Employee|false {
+        global $pdo;
+
+        $sql = "SELECT * FROM employees WHERE username = :username";
+
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(":username", $username, PDO::PARAM_STR);
+        $statement->execute();
+
+        $statement->setFetchMode(PDO::FETCH_CLASS, "Employee");
+        $employee = $statement->fetch();
+        return $employee;
+    }
+
 
 }
