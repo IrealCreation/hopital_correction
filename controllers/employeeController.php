@@ -125,4 +125,11 @@ class EmployeeController {
 
         return $messages;
     }
+
+    public function verifyLogin(): void {
+        if(!isset($_SESSION["username"])) {
+            $_SESSION["message"] = "Merci de vous connecter pour accéder à ce contenu";
+            header("Location: /connexion.php");
+        }
+    }
 }

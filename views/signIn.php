@@ -2,6 +2,15 @@
 
 <form action="#" method="POST">
 
+    <?php
+        if(isset($_SESSION["message"])) { ?>
+            <p class="alert alert-warning"><?= $_SESSION["message"] ?></p>
+            
+            <?php 
+            unset($_SESSION["message"]);
+        }
+    ?>
+
     <?php if (count($messages) > 0) {
         foreach ($messages as $message) {
             if ($message["success"]) { ?>
